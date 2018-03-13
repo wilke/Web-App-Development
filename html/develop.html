@@ -38,5 +38,37 @@
 
  	  <!--the content div-->
  	  <div id="content">I like not world!</div>
+    
+    
+    <!-- Playing with JS -->
+    <div id="shock"></div>
+    
+    <script> 
+      var url = "http://localhost:8001/shock/api/node/"
+      var request = $.ajax({
+                      dataType: "json",
+                      url: url,
+                    });
+      request.done( 
+     
+        function( data ){
+            console.log("SUPER") ;
+            console.log(data)
+            var element = document.getElementById("shock") ;
+            var node_ids = "<br>"
+            for (var i in data.data ) {
+              console.log(i)
+              node_ids += data.data[i].id + "<br>"
+            }
+            element.innerHTML = node_ids
+            
+        } 
+      )   
+      request.fail(console.log("URL call " + url + " failed"))                         
+                
+              
+     
+    </script>  
+    
   </body>
 </html>
