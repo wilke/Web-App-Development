@@ -1,73 +1,69 @@
-<!--external javascript files-->
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../Retina/js/bootstrap.min.js"></script>
-    
-    <!--basic javascript files-->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <script type="text/javascript" src="../Retina/js/stm.js"></script>
-    <script type="text/javascript" src="../Retina/js/retina.js"></script>
+    <title>TESTING</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     
-    <!--bootstrap style-->
-    <link rel="stylesheet" type="text/css" href="../Retina/js/bootstrap.css">
+    <!--external javascript files-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--external bootstrap style-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!--local javascript files-->
+    <script type="text/javascript" src="Retina/js/stm.js"></script>
+    <script type="text/javascript" src="Retina/js/retina.js"></script>    
     
     <!--initialization-->
     <script type="text/javascript">
-      jQuery(document).ready(function() {
+    jQuery(document).ready(function() {
         stm.init({});
-        Retina.init({ renderer_resources: "../Retina/renderers" ,
-                      widget_resources: "../Retina/widgets" ,
-                      library_resources: "../Retina/js" });
-        // alert( document.getElementById("content") ) ;
-        var field = document.getElementById("content")
+        Retina.init({ renderer_resources: "Retina/renderers",
+                      widget_resource: "Retina/widgets",
+                      library_resources: "Retina/js" });
+        var field = document.getElementById("content");
         field.innerHTML = "This shouldn't be here!";
         Retina.load_widget("Example").then( function () {
-                     Retina.Widget.create("Example", { "target": document.getElementById("content")});
-        	});
-      });
+            Retina.Widget.create("Example", { "target": document.getElementById("content")});
+        });
+    });
     </script>
     
-    <title>TESTING</title>
   </head>
   <body>
     <h2>What a wonderful world</h2>    
     <p>Say hello to it!</p>
 
- 	  <!--the content div-->
- 	  <div id="content">I like not world!</div>
+    <!--the content div-->
+    <div id="content">I like not world!</div>
     
     
     <!-- Playing with JS -->
     <div id="shock"></div>
     
     <script> 
-      var url = "http://localhost:8001/shock/api/node/"
-      var request = $.ajax({
-                      dataType: "json",
-                      url: url,
-                    });
-      request.done( 
-     
-        function( data ){
-            console.log("SUPER") ;
-            console.log(data)
-            var element = document.getElementById("shock") ;
-            var node_ids = "<br>"
-            for (var i in data.data ) {
-              console.log(i)
-              node_ids += data.data[i].id + "<br>"
-            }
-            element.innerHTML = node_ids
-            
-        } 
-      )   
-      request.fail(console.log("URL call " + url + " failed"))                         
-                
-              
-     
+    var url = "http://localhost:8001/shock/api/node/";
+    var request = $.ajax({
+	dataType: "json",
+	url: url,
+    });
+    request.done( 
+	function( data ){
+	    console.log("SUPER");
+	    console.log(data);
+	    var element = document.getElementById("shock");
+	    var node_ids = "<br>";
+	    for (var i in data.data) {
+		console.log(i);
+		node_ids += data.data[i].id + "<br>";
+	    }
+	    element.innerHTML = node_ids;
+	}
+    );
+    request.fail(console.log("URL call " + url + " failed"));
     </script>  
     
   </body>
