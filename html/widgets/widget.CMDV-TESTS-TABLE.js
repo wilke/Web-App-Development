@@ -1,4 +1,20 @@
 (function() {
+  
+  
+  // var promise = jQuery.Deferred();
+//   promise.resolve();
+//   promise.then( function () { alert('promise fulfilled'); });
+//
+//
+//   var promise = jQuery.Deferred();
+//   var promises = [];
+//   promises.push(promise1);
+//   promises.push(promise2);
+//   jQuery.when.apply(this, promises).then(function() {
+//       promise.resolve();
+//   });
+  
+  
   var widget = Retina.Widget.extend({
     // most information in the about function is intended for conveying information
     // to the programmer using the widget
