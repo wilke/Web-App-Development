@@ -16,38 +16,7 @@
     <!--local javascript files-->
     <script type="text/javascript" src="Retina/js/stm.js"></script>
     <script type="text/javascript" src="Retina/js/retina.js"></script> 
-       
-    
-    <!--Playground-->
-    
-    <script type="text/javascript"> 
-    var url = "http://localhost:8001/shock/api/node/";
-    var request = $.ajax({
-	                        dataType: "json",
-	                        url: url,
-                  });
-    request.done( 
-  	function( data ){
-    	    console.log("SUPER");
-    	    console.log(data);
-    	    var element = document.getElementById("shock");
-    	    var node_ids = "<br>";
-          stm.DataStore.cmdvTests = [] ;
-          // console.log(stm.DataStore.cmdvTests);
-    	    for ( i = 0 ; i < data.data.length ; i++) {
-            stm.DataStore.cmdvTests.push(data.data[i]) ;
-    		    console.log(i);
-            console.log(data.data[i])
-    		    node_ids += data.data[i].id + "<br>";
-    	    }
-          let myList = data.data.map( function(v,i){ return i } )
- 
-    	    element.innerHTML = node_ids + myList.join(" -- ") ;
-  	     }
-      );
-      request.fail(console.log("URL call " + url + " failed"));
-    </script>  
-    
+           
     <!--initialization-->
     <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -57,9 +26,6 @@
                       library_resource: "Retina/js" });
         var field = document.getElementById("content");
         field.innerHTML = "This shouldn't be here!";
-        Retina.load_widget("Example").then( function () {
-            Retina.Widget.create("Example", { "target": document.getElementById("content")});
-        });
         Retina.load_widget({'name': 'CMDV-TESTS-TABLE', 'resource': 'widgets'}).then( function () {
             Retina.Widget.create("CMDV-TESTS-TABLE", { "target": document.getElementById("Table")});
         });       
